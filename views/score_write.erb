@@ -1,53 +1,76 @@
-<script src="js/main.js"></script>
 
 <!-- Main -->
-<div id="main">
+<section id="main" class="wrapper">
   <div class="container">
-    <div class="row">
 
-    
-      <!-- Content -->
-      <div id="content" class="8u skel-cell-important">
-        <section>
-          <header>
-            <h2>得点記入</h2>
-            <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-          </header>
-          <form action="/check" method="POST" name ="score" onsubmit="return check()">
-            <div>
-              学期:<input type = "number" name = "semester" min="1" max="3" step="1">
-            </div>
-            <div>
-              テスト名:中間<input type="radio" name="test" value="中間" checked>
-              期末<input type="radio" name="test" value="期末">
-              実力<input type="radio" name="test" value="実力">
-            </div>
-            <div>
-              学校名:
-              武庫東<input type="radio" name="school_name" value="武庫東" checked>
-              南武庫之荘<input type="radio" name="school_name" value="南武庫之荘">
-              武庫<input type="radio" name="school_name" value="武庫">
-              常陽<input type="radio" name="school_name" value="常陽">
-            </div>
-            <div>
-             得点:
-             <table>
-               <tr><td>国語<input type = "number" name = "japanese" min="0" max="100" step="1"></td></tr>
-               <tr><td>数学<input type = "number" name = "math" min="0" max="100" step="1"></td></tr>
-               <tr><td>英語<input type = "number" name = "english" min="0" max="100" step="1"></td></tr>
-               <tr><td>理科<input type = "number" name = "science" min="0" max="100" step="1"></td></tr>
-               <tr><td>社会<input type = "number" name = "social" min="0" max="100" step="1"></td></tr>
-             </table>
-           </div>
-           <div>
-            <input type="submit" id="submit" value="登録する">
-            <input type="reset" value="入力内容をリセットする">
-          </div>
-        </form>
-      </section>
+    <header class="major">
+      <h2>テスト結果記入</h2>
+      <p></p>
+    </header>
+    <script type="text/javascript">
+
+      function formCheck(){
+        var flag = 0;
+
+    // 入力必須項目が入力されているかチェック
+    if( document . score . test . value == "" ){ // 名前が未入力の場合
+      flag = 1;
+    }else if(document.score.semester.value ==""){
+      flag=1;
+    }else if(document.score.school_name.value ==""){
+      flag=1;
+    }else if(document.score.japanese.value ==""){
+      flag=1;
+    }else if(document.score.math.value ==""){
+      flag=1;
+    }else if(document.score.english.value ==""){
+      flag=1;
+    }else if(document.score.science.value ==""){
+      flag=1;
+    }else if(document.score.social.value ==""){
+      flag=1;
+    }
+
+    if( flag ){ // 入力必須項目に未入力があった場合
+        window . alert( '全て入力して下さい。' ); // アラートを表示
+        return false; // 送信中止
+    }else{ // 入力必須項目が全て入力済みだった場合
+        return true; // 送信実行
+      }
+
+    }
+  </script>
+
+  <form action="/check" method="POST" name ="score" onsubmit="return formCheck()">
+    <div>
+      学期:<input type = "number" name = "semester" min="1" max="3" step="1">
     </div>
-
+    <div>
+      テスト名:中間<input type = "radio" name = "test" value="中間" checked>
+      期末<input type="radio" name="test" value="期末">
+      実力<input type="radio" name="test" value="実力">
+    </div>
+    <div>
+      学校名:
+      武庫東<input type="radio" name="school_name" value="武庫東" checked>
+      南武庫之荘<input type="radio" name="school_name" value="南武庫之荘">
+      武庫<input type="radio" name="school_name" value="武庫">
+      常陽<input type="radio" name="school_name" value="常陽">
+    </div>
+    <div>
+     得点:
+     <table>
+       <tr><td>国語<input type = "number" name = "japanese" min="0" max="100" step="1"></td></tr>
+       <tr><td>数学<input type = "number" name = "math" min="0" max="100" step="1"></td></tr>
+       <tr><td>英語<input type = "number" name = "english" min="0" max="100" step="1"></td></tr>
+       <tr><td>理科<input type = "number" name = "science" min="0" max="100" step="1"></td></tr>
+       <tr><td>社会<input type = "number" name = "social" min="0" max="100" step="1"></td></tr>
+     </table>
+   </div>
+   <div>
+    <input type="submit" id="submit" value="登録する">
+    <input type="reset" value="入力内容をリセットする">
   </div>
+</form>
 </div>
-</div>
-<!-- /Main -->
+</section>

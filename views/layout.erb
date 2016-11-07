@@ -1,81 +1,118 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>STUDYBOOK</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-panels.min.js"></script>
-    <script src="js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="/css/skel-noscript.css" />
-      <link rel="stylesheet" href="/css/style.css" />
-      <link rel="stylesheet" href="/css/style-desktop.css" />
-    </noscript>
-  </head>
-  <body class="homepage">
+<!DOCTYPE html>
 
-  <!-- Header -->
-    <div id="header">
-      <div id="nav-wrapper"> 
-        <!-- Nav -->
-        <nav id="nav">
-          <ul>
-            <li class="active"><a href="/">TOP</a></li>
-            <li><a href="/score_write">SCORE WRITE</a></li>
-            <li><a href="/score">SCORE</a></li>
-            <li><a href="no-sidebar.html">No Sidebar</a></li>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>STUDYBOOK</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/skel-layers.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/main.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+  </noscript>
+</head>
+
+ <body>
+
+
+   <!-- Header -->
+   <header id="header">
+    <h1><a href="/">STUDYBOOK</a></h1>
+    <nav id="nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/score_write">Score Write</a></li>
+        <li><a href="/score">Score</a></li>
+        <li><a href="/" class="button special">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main-->
+  <%= yield %>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <section class="links">
+        <div class="row">
+          <section class="3u 6u(medium) 12u$(small)">
+            <h3>Lorem ipsum dolor</h3>
+            <ul class="unstyled">
+              <li><a href="#">Lorem ipsum dolor sit</a></li>
+              <li><a href="#">Nesciunt itaque, alias possimus</a></li>
+              <li><a href="#">Optio rerum beatae autem</a></li>
+              <li><a href="#">Nostrum nemo dolorum facilis</a></li>
+              <li><a href="#">Quo fugit dolor totam</a></li>
+            </ul>
+          </section>
+          <section class="3u 6u$(medium) 12u$(small)">
+            <h3>Culpa quia, nesciunt</h3>
+            <ul class="unstyled">
+              <li><a href="#">Lorem ipsum dolor sit</a></li>
+              <li><a href="#">Reiciendis dicta laboriosam enim</a></li>
+              <li><a href="#">Corporis, non aut rerum</a></li>
+              <li><a href="#">Laboriosam nulla voluptas, harum</a></li>
+              <li><a href="#">Facere eligendi, inventore dolor</a></li>
+            </ul>
+          </section>
+          <section class="3u 6u(medium) 12u$(small)">
+            <h3>Neque, dolore, facere</h3>
+            <ul class="unstyled">
+              <li><a href="#">Lorem ipsum dolor sit</a></li>
+              <li><a href="#">Distinctio, inventore quidem nesciunt</a></li>
+              <li><a href="#">Explicabo inventore itaque autem</a></li>
+              <li><a href="#">Aperiam harum, sint quibusdam</a></li>
+              <li><a href="#">Labore excepturi assumenda</a></li>
+            </ul>
+          </section>
+          <section class="3u$ 6u$(medium) 12u$(small)">
+            <h3>Illum, tempori, saepe</h3>
+            <ul class="unstyled">
+              <li><a href="#">Lorem ipsum dolor sit</a></li>
+              <li><a href="#">Recusandae, culpa necessita nam</a></li>
+              <li><a href="#">Cupiditate, debitis adipisci blandi</a></li>
+              <li><a href="#">Tempore nam, enim quia</a></li>
+              <li><a href="#">Explicabo molestiae dolor labore</a></li>
+            </ul>
+          </section>
+        </div>
+      </section>
+      <div class="row">
+        <div class="8u 12u$(medium)">
+          <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+            <li>Images: <a href="http://unsplash.com">Unsplash</a></li>
           </ul>
-        </nav>
-      </div>
-      <div class="container"> 
-        
-        <!-- Logo -->
-        <div id="logo">
-          <h1><a href="#">STUDYBOOK</a></h1>
-          <span class="tag">BY RYOMA</span>
+        </div>
+        <div class="4u$ 12u$(medium)">
+          <ul class="icons">
+            <li>
+              <a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+            </li>
+            <li>
+              <a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+            </li>
+            <li>
+              <a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+            </li>
+            <li>
+              <a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  <!-- Main -->
-    <%=yield%>
+  </footer>
 
-  <!-- Tweet -->
-    <div id="tweet">
-      <div class="container">
-        <section>
-          <blockquote>&ldquo;これはテストです&rdquo;</blockquote>
-        </section>
-      </div>
-    </div>
-
-  <!-- Footer -->
-    <div id="footer">
-      <div class="container">
-        <section>
-          <header>
-            <h2>Get in touch</h2>
-            <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-          </header>
-          <ul class="contact">
-            <li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
-            <li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
-            <li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
-            <li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
-          </ul>
-        </section>
-      </div>
-    </div>
-
-  <!-- Copyright -->
-    <div id="copyright">
-      <div class="container">
-        Design: <a href="http://templated.co">SAMPLE</a> Images: <a href="http://unsplash.com">sample</a> (<a href="http://unsplash.com/cc0">CC0</a>)
-      </div>
-    </div>
-
-  </body>
+</body>
 </html>
