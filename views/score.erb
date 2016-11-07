@@ -1,0 +1,31 @@
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div id="content" class="8u skel-cell-important">
+				<section>
+					<header>
+						<h2>得点記入</h2>
+						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+					</header>
+					
+					<table class="table1" border=2>
+					<tr><th></th><% @scores.reverse_each do |score| %><th><%= score.semester %>学期</th><% end %></tr>
+						<tr><td>種類</td><% @scores.reverse_each do |score| %><td><%=score.test%></td><% end %></tr>
+						<tr><td>国語</td><% @scores.reverse_each do |score| %><td><%=score.japanese%></td><% end %></tr>
+						<tr><td>数学</td><% @scores.reverse_each do |score| %><td><%=score.math%></td><% end %></tr>
+						<tr><td>英語</td><% @scores.reverse_each do |score| %><td><%=score.english%></td><% end %></tr>
+						<tr><td>理科</td><% @scores.reverse_each do |score| %><td><%=score.science%></td><% end %></tr>
+						<tr><td>社会</td><% @scores.reverse_each do |score| %><td><%=score.social%></td><% end %></tr>
+					</table>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.table1, td, th { border: 2px #808080 solid; }
+</style>>
+
+
+
