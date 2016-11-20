@@ -8,15 +8,14 @@
 						<h2>得点記入</h2>
 					</header>
 					<form action = "/new" method ="POST">
-						<input type = "number" name = "id" value=null>
 						<div>
-							学期:<input type = "number" name = "semester" value=<%=@semester%>>
+							年生:<input type = "number" name = "grade" value=<%=@grade%> >
+						</div>
+						<div>
+							学期:<input type = "number" name = "semester" value=<%=@semester%> >
 						</div>
 						<div>
 							テスト名:<input type="text" name="test" value=<%=@test%> >
-						</div>
-						<div>
-							学校名:<input type="text" name="school_name" value=<%=@school_name%>>
 						</div>
 						<div>
 							得点:

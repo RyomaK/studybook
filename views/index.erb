@@ -26,20 +26,37 @@
 	<!-- Header -->
 	<header id="header">
 		<h1><a href="/">STUDYBOOK</a></h1>
+
+		<% if login? then%>
 		<nav id="nav">
 			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/score_write">Score Write</a></li>
 				<li><a href="/score">Score</a></li>
-				<li><a href="/" class="button special">Sign Up</a></li>
+				<li><a href="/logout" class="button special">Logout</a></li>
 			</ul>
 		</nav>
+
+		<% else %>
+		<nav id="nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/sign_up" class="button special">Sign up</a></li>
+				<li><a href="/login" class="button special">Login</a></li>
+			</ul>
+		</nav>
+
+		<% end %>
 	</header>
 
 	<!-- main-->
 	<!-- Banner -->
 	<section id="banner">
-		<h2>Hi. This is STUDYBOOK.</h2>
+		<% if login? then%>
+		<h2>Hi <%=login_user.user_name%></h2>
+		<% else %>
+		<h2>this is STUDYBOOK</h2>
+		<%end%>
 		<p>このサービスはテストです</p>
 		<ul class="actions">
 			<li>
@@ -132,7 +149,7 @@
 			</header>
 		</div>
 		<div class="container 50%">
-		
+
 			<form action="#" method="post">
 				<div class="row uniform">
 					<div class="6u 12u$(small)">

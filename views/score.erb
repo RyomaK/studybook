@@ -6,18 +6,22 @@
 				<section>
 					<header>
 						<h2>テスト結果</h2>
+
 						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
 					</header>
+					<h1><%= @users.school_name %>中学校</h1>
+					
 					
 					<table class="table1" border=2>
-					<tr><th></th><% @scores.reverse_each do |score| %><th><%= score.semester %>学期</th><% end %></tr>
-						<tr><td>種類</td><% @scores.reverse_each do |score| %><td><%=score.test%></td><% end %></tr>
-						<tr><td>国語</td><% @scores.reverse_each do |score| %><td><%=score.japanese%></td><% end %></tr>
-						<tr><td>数学</td><% @scores.reverse_each do |score| %><td><%=score.math%></td><% end %></tr>
-						<tr><td>英語</td><% @scores.reverse_each do |score| %><td><%=score.english%></td><% end %></tr>
-						<tr><td>理科</td><% @scores.reverse_each do |score| %><td><%=score.science%></td><% end %></tr>
-						<tr><td>社会</td><% @scores.reverse_each do |score| %><td><%=score.social%></td><% end %></tr> 
-						<tr><td>合計</td><% @scores.reverse_each do |score| %><td><%=score.social+score.science+score.english+score.math+score.japanese%></td><% end %></tr>
+					<tr><th></th><% @scores.reverse_each do |score| if score.user_id == @users.user_id then %><th><%= score.grade %>年</th><% end end %></tr>
+					<tr><td>学期</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.semester%>学期</td><% end end %></tr>
+						<tr><td>種類</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.test%></td><% end end %></tr>
+						<tr><td>国語</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.japanese%></td><% end end %></tr>
+						<tr><td>数学</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.math%></td><% end end %></tr>
+						<tr><td>英語</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.english%></td><% end end %></tr>
+						<tr><td>理科</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.science%></td><% end end %></tr>
+						<tr><td>社会</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.social%></td><% end end %></tr> 
+						<tr><td>合計</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.social+score.science+score.english+score.math+score.japanese%></td><% end end %></tr>
 					</table>
 				</section>
 			</div>

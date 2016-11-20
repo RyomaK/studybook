@@ -25,14 +25,28 @@
    <!-- Header -->
    <header id="header">
     <h1><a href="/">STUDYBOOK</a></h1>
+    <% if login? then %>
     <nav id="nav">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/score_write">Score Write</a></li>
         <li><a href="/score">Score</a></li>
-        <li><a href="/" class="button special">Sign Up</a></li>
+        <li><a href="/logout" class="button special">Logout</a></li>
       </ul>
     </nav>
+
+    <% else %>
+     <nav id="nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+         <li><a href="/sign_up" class="button special">Sign_up</a></li>
+        <li><a href="/login" class="button special">Login</a></li>
+      </ul>
+    </nav>
+    
+    <% end %>
+
+
   </header>
 
   <!-- main-->
