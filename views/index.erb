@@ -18,6 +18,28 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/style-xlarge.css" />
 	</noscript>
+	<!-- jQuery.jsの読み込み -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+	<!-- スムーズスクロール部分の記述 -->
+	<script>
+	$(function(){
+   	// #で始まるアンカーをクリックした場合に処理
+   	$('a[href^=#]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+  	 });
+});
+</script>
 </head>
 
 <body class = "landing">
@@ -31,8 +53,10 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="/">Home</a></li>
+				<li><a href="/rank">Ranking</a></li>
 				<li><a href="/score_write">Score Write</a></li>
 				<li><a href="/score">Score</a></li>
+				<li><a href="#contact">Contact</a></li>
 				<li><a href="/logout" class="button special">Logout</a></li>
 			</ul>
 		</nav>
@@ -41,6 +65,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="/">Home</a></li>
+				<li><a href="#contact">Contact</a></li>
 				<li><a href="/sign_up" class="button special">Sign up</a></li>
 				<li><a href="/login" class="button special">Login</a></li>
 			</ul>
@@ -60,103 +85,60 @@
 		<p>このサービスはテストです</p>
 		<ul class="actions">
 			<li>
-				<a href="/" class="button big">Read More</a>
+				<a href="#readmore" class="button big">Read More</a>
 			</li>
 		</ul>
 	</section>
 
 	<!-- One -->
+	<div id="readmore"></div>
 	<section id="one" class="wrapper style1 special">
 		<div class="container">
 			<header class="major">
-				<h2>Consectetur adipisicing elit</h2>
-				<p>Lorem ipsum dolor sit amet, delectus consequatur, similique quia!</p>
+				<h2>STUDYBOOKとは</h2>
+				<p>練習で作ってみたサービスです。利用は自己責任でお願いします。</p>
 			</header>
 			<div class="row 150%">
 				<div class="4u 12u$(medium)">
 					<section class="box">
 						<i class="icon big rounded color1 fa-cloud"></i>
-						<h3>Lorem ipsum dolor</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
+						<h3>自分の定期テストの結果を保存</h3>
+						<p>尼崎市の中学校がメインになっています。もしデータをうち間違えた場合は、contactで知らせてください。</p>
 					</section>
 				</div>
 				<div class="4u 12u$(medium)">
 					<section class="box">
 						<i class="icon big rounded color9 fa-desktop"></i>
-						<h3>Consectetur adipisicing</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
+						<h3>勉強のToDoリスト</h3>
+						<p>すべきことを記録していきます。（いずれは追加）</p>
 					</section>
 				</div>
 				<div class="4u$ 12u$(medium)">
 					<section class="box">
 						<i class="icon big rounded color6 fa-rocket"></i>
-						<h3>Adipisicing elit totam</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
+						<h3>他に随時機能を追加</h3>
+						<p>頑張ります</p>
 					</section>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Two -->
-	<section id="two" class="wrapper style2 special">
-		<div class="container">
-			<header class="major">
-				<h2>Lorem ipsum dolor sit</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, autem.</p>
-			</header>
-			<section class="profiles">
-				<div class="row">
-					<section class="3u 6u(medium) 12u$(xsmall) profile">
-						<img src="images/profile_placeholder.gif" alt="" />
-						<h4>Lorem ipsum</h4>
-						<p>Lorem ipsum dolor</p>
-					</section>
-					<section class="3u 6u$(medium) 12u$(xsmall) profile">
-						<img src="images/profile_placeholder.gif" alt="" />
-						<h4>Voluptatem dolores</h4>
-						<p>Ullam nihil repudi</p>
-					</section>
-					<section class="3u 6u(medium) 12u$(xsmall) profile">
-						<img src="images/profile_placeholder.gif" alt="" />
-						<h4>Doloremque quo</h4>
-						<p>Harum corrupti quia</p>
-					</section>
-					<section class="3u$ 6u$(medium) 12u$(xsmall) profile">
-						<img src="images/profile_placeholder.gif" alt="" />
-						<h4>Voluptatem dicta</h4>
-						<p>Et natus sapiente</p>
-					</section>
-				</div>
-			</section>
-			<footer>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam dolore illum, temporibus veritatis eligendi, aliquam, dolor enim itaque veniam aut eaque sequi qui quia vitae pariatur repudiandae ab dignissimos ex!</p>
-				<ul class="actions">
-					<li>
-						<a href="#" class="button big">Lorem ipsum dolor sit</a>
-					</li>
-				</ul>
-			</footer>
-		</div>
-	</section>
-
 	<!-- Three -->
+	<div id ="contact"></div>
 	<section id="three" class="wrapper style3 special">
 		<div class="container">
 			<header class="major">
-				<h2>Consectetur adipisicing elit</h2>
-				<p>Lorem ipsum dolor sit amet. Delectus consequatur, similique quia!</p>
+				<h2>Contact</h2>
+				<p>何か質問や要望があればご連絡ください。</p>
 			</header>
 		</div>
 		<div class="container 50%">
 
-			<form action="#" method="post">
+			<form action="/message" method="post">
 				<div class="row uniform">
 					<div class="6u 12u$(small)">
 						<input name="name" id="name" value="" placeholder="Name" type="text">
-					</div>
-					<div class="6u$ 12u$(small)">
-						<input name="email" id="email" value="" placeholder="Email" type="email">
 					</div>
 					<div class="12u$">
 						<textarea name="message" id="message" placeholder="Message" rows="6"></textarea>
@@ -176,43 +158,39 @@
 			<section class="links">
 				<div class="row">
 					<section class="3u 6u(medium) 12u$(small)">
-						<h3>Lorem ipsum dolor</h3>
+						<h3>Math</h3>
 						<ul class="unstyled">
-							<li><a href="#">Lorem ipsum dolor sit</a></li>
-							<li><a href="#">Nesciunt itaque, alias possimus</a></li>
-							<li><a href="#">Optio rerum beatae autem</a></li>
-							<li><a href="#">Nostrum nemo dolorum facilis</a></li>
-							<li><a href="#">Quo fugit dolor totam</a></li>
+							<li><a href="http://math.005net.com/study.php">How to study math</a></li>
+							<li><a href="http://www.nyushi-sugaku.com/teiki-test.html">1年生</a></li>
+							<li><a href="http://math.005net.com/youten.php#ul2">2年生</a></li>
+							<li><a href="http://math.005net.com/youten.php#ul3">3年生</a></li>
+							<li><a href="https://matome.naver.jp/odai/2134199864808872901">まとめ</a></li>
 						</ul>
 					</section>
 					<section class="3u 6u$(medium) 12u$(small)">
-						<h3>Culpa quia, nesciunt</h3>
+						<h3>English</h3>
 						<ul class="unstyled">
-							<li><a href="#">Lorem ipsum dolor sit</a></li>
-							<li><a href="#">Reiciendis dicta laboriosam enim</a></li>
-							<li><a href="#">Corporis, non aut rerum</a></li>
-							<li><a href="#">Laboriosam nulla voluptas, harum</a></li>
-							<li><a href="#">Facere eligendi, inventore dolor</a></li>
+							<li><a href="http://english.005net.com/youten.php">まとめ</a></li>
+							<li><a href="https://matome.naver.jp/odai/2142701696741327401">不規則動詞</a></li>
+							<li><a href="http://egao21.com/01/word/">単語</a></li>
 						</ul>
 					</section>
 					<section class="3u 6u(medium) 12u$(small)">
-						<h3>Neque, dolore, facere</h3>
+						<h3>Science</h3>
 						<ul class="unstyled">
-							<li><a href="#">Lorem ipsum dolor sit</a></li>
-							<li><a href="#">Distinctio, inventore quidem nesciunt</a></li>
-							<li><a href="#">Explicabo inventore itaque autem</a></li>
-							<li><a href="#">Aperiam harum, sint quibusdam</a></li>
-							<li><a href="#">Labore excepturi assumenda</a></li>
+							<li><a href="http://science.005net.com/yoten.php">まとめ</a></li>
+							<li><a href="http://science.005net.com/mondai.php">問題</a></li>
+							<li><a href="http://science.005net.com/yogo.php"></a></li>
 						</ul>
 					</section>
 					<section class="3u$ 6u$(medium) 12u$(small)">
-						<h3>Illum, tempori, saepe</h3>
+						<h3>total</h3>
 						<ul class="unstyled">
-							<li><a href="#">Lorem ipsum dolor sit</a></li>
-							<li><a href="#">Recusandae, culpa necessita nam</a></li>
-							<li><a href="#">Cupiditate, debitis adipisci blandi</a></li>
-							<li><a href="#">Tempore nam, enim quia</a></li>
-							<li><a href="#">Explicabo molestiae dolor labore</a></li>
+							<li><a href="http://www.ituore.com/entry/study-junior">how to study</a></li>
+							<li><a href="http://xn--swqwd788bm2jy17d.net/hyogo.php">高校偏差値</a></li>
+							<li><a href="http://daigakujyuken.boy.jp/">大学偏差値</a></li>
+							<li><a href="http://study-guide.hatenablog.jp/entry/20140425/p1">動画まとめ</a></li>
+							<li><a href="https://www.youtube.com/watch?v=j7yoAzQ1PuA&index=8&list=PLFryQ-K6iv6UvSIaEv8KGVh6OkFwZm7-c">面白くなるyoutube</a></li>
 						</ul>
 					</section>
 				</div>
@@ -220,9 +198,9 @@
 			<div class="row">
 				<div class="8u 12u$(medium)">
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li>
-						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
-						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+						<li>&copy;Ryoma Kurisu</li>
+						<li>Design:TEMPLATED</li>
+						<li>Image:</a></li>
 					</ul>
 				</div>
 				<div class="4u$ 12u$(medium)">

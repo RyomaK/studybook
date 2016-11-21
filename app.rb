@@ -4,39 +4,61 @@
    require 'sinatra/reloader'
    register Sinatra::Reloader
    require 'sinatra/base'
+   require 'bcrypt'
+   #require 'bcrypt-ruby'
 
 
 
    Encoding.default_external = 'UTF-8'
 
-   enable :sessions
 
-   ActiveRecord::Base.establish_connection(
-   	"adapter" => "sqlite3",
-   	"database" => "./score.db"
-   	)
+  	configure do
+    	# for ActiveRecord
+    	ActiveRecord::Base.establish_connection(
+   		"adapter" => "sqlite3",
+   		"database" => "./score.db"
+   		)
+    	# for sessions
+    	set :sessions, true
+    	set :session_secret, 'My app secret abcde!!!'
+
+    	# for inline_templates
+    	set :inline_templates, true
+ 	 end
 
    class Score < ActiveRecord::Base
    end
    class User < ActiveRecord::Base
-   end
+   	
+   	validates :user_name, presence: true
+   	validates :password_digest, presence: true
+   	validates :user_name, uniqueness: true
+   	#validates :user_id, presence: true
+   	validates :school_name, presence: true
+
+ 	 # for helper methods
+ 	 has_secure_password
+ 	end
 	# coding: UTF-8
+	helpers do
 
-	def login?
-		if session[:user_id] == nil then
-			return false
-		else
-			return true
+		def login?
+			if session[:user_id] == nil then
+				return false
+			else
+				return true
+			end
 		end
-	end
 
-	def login_user
-		User.find_by(user_id: session[:user_id])
-	end
+		def login_user
+			User.find_by(user_id: session[:user_id])
+		end
 
 
-	def logout
-		session.delete(:user_id)
+		def logout
+			session.delete(:user_id)
+		end
+
 	end
 	
 
@@ -45,12 +67,11 @@
 	end
 
 	post '/login' do
-		@user_name = params[:user_name]
-		@user_pass = params[:user_pass]
-		@user =  User.find_by(user_name: @user_name)
-		if user = nil || @user_pass != @user.user_pass then
+
+		user = User.find_by(user_name: params[:user_name])
+		if user && user.authenticate(params[:user_pass]) then
+			session[:user_id] = user.user_id
 		else
-			session[:user_id] = @user.user_id
 		end
 
 		if login? then
@@ -81,6 +102,7 @@
 	end
 
 	post "/new" do 
+		sum = params[:japanese].to_i+params[:english].to_i+params[:math].to_i+params[:science].to_i+params[:social].to_i
 		Score.create(
 			user_id: session[:user_id].to_i,
 			grade: params[:grade],
@@ -90,6 +112,7 @@
 			math: params[:math],
 			science:  params[:science],
 			social:  params[:social],
+			sum: sum,
 			test:  params[:test]
 			)
 		redirect '/score_write'    
@@ -110,17 +133,34 @@
 	end
 
 	get "/sign_up" do
-			erb :sign_up
-		
+		@notice = session[:notice]
+		erb :sign_up
 	end
 
 	post "/sign_up" do
-			User.create(
-				user_name: params[:user_name],
-				user_pass: params[:user_pass],
-				school_name: params[:school_name]
-				)
-			redirect "/login"
+		user = User.new do |u|
+      		u.user_name = params[:user_name]
+     		u.password = params[:user_pass]
+    		u.password_confirmation = params[:pass_confirm]
+    		u.school_name = params[:school_name]
+    	end
+  		if user.save && user.valid?
+   			session[:user_id] = user.user_id
+   			session[:notice]=nil
+  			redirect "/" #user dashboard page
+ 		else
+ 			session[:notice] = "すでにユーザー名が使われているか、パスワードが合っていません"
+    		redirect "/sign_up?"
+  		end
 	end
-	
- 	
+
+	post "/message" do
+
+	end
+
+	get "/rank" do
+		@sc = Score.order("sum desc").all
+		@us = User.order("user_id").all 
+		erb :rank
+	end
+

@@ -1,0 +1,21 @@
+
+<div id="main">
+	<div class="container">
+		<header class="major">
+			<h2>ランキング</h2>
+
+		</header>
+		<div class="row">
+			<div id="content" class="8u skel-cell-important">
+				<table class="table4" border=1>
+				<tr><th>順位</th><th>得点</th><th>名前</th><th>学校</th></tr>
+				<% 5.times do |i| %><tr><td><%= i+1 %></td><td><%= @sc[i].sum %></td><td>
+				<% @q = @us.find_by user_id: @sc[i].user_id %>
+				<%= @q.user_name %></td><td><%=@q.school_name%>中学校</td></tr>
+				<% end %>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</div>

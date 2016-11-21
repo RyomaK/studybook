@@ -21,7 +21,7 @@
 						<tr><td>英語</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.english%></td><% end end %></tr>
 						<tr><td>理科</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.science%></td><% end end %></tr>
 						<tr><td>社会</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.social%></td><% end end %></tr> 
-						<tr><td>合計</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.social+score.science+score.english+score.math+score.japanese%></td><% end end %></tr>
+						<tr><td>合計</td><% @scores.reverse_each do |score| if score.user_id == @users.user_id then%><td><%=score.sum%></td><% end end %></tr>
 					</table>
 				</section>
 			</div>
