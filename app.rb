@@ -1,8 +1,8 @@
    # coding: UTF-8
    require 'sinatra'
    require 'active_record'
-   require 'sinatra/reloader'
-   register Sinatra::Reloader
+   #require 'sinatra/reloader'
+   #register Sinatra::Reloader
    require 'sinatra/base'
    require 'bcrypt'
    require 'cgi'
@@ -21,6 +21,7 @@
     	# for sessions
     	set :sessions, true
     	set :session_secret, 'My app secret abcde!!!'
+    	set :environment, :production
 
     	# for inline_templates
     	set :inline_templates, true
@@ -30,10 +31,8 @@
    end
    class User < ActiveRecord::Base
    	
-   	validates :user_name, presence: true
    	validates :password_digest, presence: true
-   	validates :user_name, uniqueness: true
-   	#validates :user_id, presence: true
+   	validates :user_name, uniqueness: true, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i},length: {minimum: 2, maximum:  10}
    	validates :school_name, presence: true
 
  	 # for helper methods
@@ -145,6 +144,7 @@
 
 	get "/sign_up" do
 		@notice = session[:notice]
+		session[:notice] = nil
 		erb :sign_up
 	end
 
