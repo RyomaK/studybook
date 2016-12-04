@@ -5,7 +5,7 @@
    register Sinatra::Reloader
    require 'sinatra/base'
    require 'bcrypt'
-   #require 'bcrypt-ruby'
+   require 'cgi'
 
 
 
@@ -57,6 +57,17 @@
 
 		def logout
 			session.delete(:user_id)
+		end
+
+		def counter
+			 file = File.new("data/access.txt", "r+")
+			 file.flock(File::LOCK_EX)
+			 cnt  = file.gets.to_i + 1 
+			 file.seek(0, IO::SEEK_SET)
+			 file.puts cnt
+			 file.flock(File::LOCK_UN)
+			 file.close
+			 return cnt.to_s
 		end
 
 	end
