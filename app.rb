@@ -32,7 +32,7 @@
    class User < ActiveRecord::Base
    	
    	validates :password_digest, presence: true
-   	validates :user_name, uniqueness: true, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i},length: {minimum: 2, maximum:  10}
+   	validates :user_name, uniqueness: true, presence: true,length: {minimum: 2, maximum:  10}
    	validates :school_name, presence: true
 
  	 # for helper methods
