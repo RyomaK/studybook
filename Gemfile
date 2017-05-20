@@ -6,4 +6,4 @@ gem "sinatra"
 gem "warden"
 gem "rack"
 gem "bcrypt"
-gem “sqlite3”
+gem "sqlite3"
